@@ -85,7 +85,7 @@ def world_selection_screen():
         WORLD_2.update(SCREEN)
         #World 3
         WORLD_3 = Button(image=None, pos=(1140, 300),
-                         text_input="World 3", font=get_font(30), base_color="Red", hovering_color="Green")
+                         text_input="World 3", font=get_font(30), base_color="White", hovering_color="Green")
         WORLD_3.changeColor(PLAY_MOUSE_POS)
         WORLD_3.update(SCREEN)
 
@@ -153,7 +153,7 @@ def level_selection_screen(world):
         WORLD_2.update(SCREEN)
         #World 3
         WORLD_3 = Button(image=None, pos=(1140, 300),
-                         text_input="World 3", font=get_font(30), base_color="Red", hovering_color="Green")
+                         text_input="World 3", font=get_font(30), base_color="White", hovering_color="Green")
         WORLD_3.changeColor(PLAY_MOUSE_POS)
         WORLD_3.update(SCREEN)
 
@@ -286,13 +286,16 @@ def play(level):
                     color = 'Red'
                 elif(type == 'X'):
                     color = '#929dfc' #Soft blue
-                elif(type in [' ','I']):
+                elif(type in [' ','I','T']):
                     color = 'White'
                 if(grid_level.get_player_position() == (col, row)):
                     color = 'Blue'
                 pygame.draw.rect(SCREEN, color, (390 + (row * TILE_SIZE_Y), 200 + (col * TILE_SIZE_X), TILE_SIZE_Y, TILE_SIZE_X))
                 if type == 'I':
                     pygame.draw.rect(SCREEN, 'Yellow', (390 + (row * TILE_SIZE_Y) + TILE_SIZE_Y/4, 200 + (col * TILE_SIZE_X) + TILE_SIZE_X/4, TILE_SIZE_Y /2, TILE_SIZE_X / 2))
+                    pygame.draw.rect(SCREEN, '#a1a1a1', (390 + (row * TILE_SIZE_Y) + TILE_SIZE_Y/4, 200 + (col * TILE_SIZE_X) + TILE_SIZE_X/4, TILE_SIZE_Y /2, TILE_SIZE_X / 2), 1)
+                if type == 'T':
+                    pygame.draw.rect(SCREEN, '#550180', (390 + (row * TILE_SIZE_Y) + TILE_SIZE_Y/4, 200 + (col * TILE_SIZE_X) + TILE_SIZE_X/4, TILE_SIZE_Y /2, TILE_SIZE_X / 2))
                     pygame.draw.rect(SCREEN, '#a1a1a1', (390 + (row * TILE_SIZE_Y) + TILE_SIZE_Y/4, 200 + (col * TILE_SIZE_X) + TILE_SIZE_X/4, TILE_SIZE_Y /2, TILE_SIZE_X / 2), 1)
                 if color not in ['Black','Red']:
                     pygame.draw.rect(SCREEN, '#a1a1a1', (390 + (row * TILE_SIZE_Y), 200 + (col * TILE_SIZE_X), TILE_SIZE_Y, TILE_SIZE_X), 1)

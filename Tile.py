@@ -9,6 +9,7 @@ class Tile:
         # B: Block (Tile that block the user)
         # X: Visited (Tile that has been visited
         # I: Switch that will unblock a serie of tile
+        # T: Teleport to another tile
         # ' ': Empty tile (yet to be visited)
 
     # Getter for the attribute Type

@@ -87,10 +87,20 @@ class Grid:
                         for tile_to_unlock in tiles_to_unlock:
                             self.grid[tile_to_unlock[0]][tile_to_unlock[1]].set_type(' ')
 
-                    #Move the player
-                    self.player_position = new_position
-                    self.grid[self.player_position[0]][self.player_position[1]].set_type('X')
-                    self.print_grid()
+                    # Teleport to another tile if the player is on a teleport
+                    if (self.grid[new_position[0]][new_position[1]].get_type() == 'T'):
+                        self.player_position = new_position
+                        self.grid[self.player_position[0]][self.player_position[1]].set_type('X')
+                        self.player_position = self.grid[new_position[0]][new_position[1]].get_switch_tiles()[0]
+                        self.grid[self.player_position[0]][self.player_position[1]].set_type('X')
+
+                    else:
+                        #Move the player
+                        self.player_position = new_position
+                        self.grid[self.player_position[0]][self.player_position[1]].set_type('X')
+                        self.print_grid()
+
+
 
                 #5. Validate if the level is completed
                 level_completed = True
